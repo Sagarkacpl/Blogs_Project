@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Profile</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="/">Navbar</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/" aria-current="page">Home
+                                <span class="visually-hidden">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                    </ul>
+                    <!-- <input class="form-control me-sm-2" type="text" placeholder="Search" /> -->
+                    <a class="btn btn-danger my-2 my-sm-0" href="/logout">
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <main class="container my-5">
+
+        <!-- Profile Header -->
+        <div class="text-center mb-5">
+            <h3 class="fw-bold">Hello 👋 <%= user.name %>
+            </h3>
+            <p class="text-muted">@<%= user.username %>
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Create Post -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-header fw-semibold">
+                        Create Post
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/posts" autocomplete="off">
+                            <div class="mb-3">
+                                <label class="form-label">Content</label>
+                                <textarea class="form-control" name="content" rows="4"
+                                    placeholder="What's on your mind?" style="resize: none;" required></textarea>
+                            </div>
+                            <button class="btn btn-success w-100">
+                                Post
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Posts -->
+            <div class="col-md-12">
+                <div class="row g-4">
+
+                    <!-- Post Card -->
+                    <% user.posts.reverse().forEach(function(post){ %>
+                        <div class="col-md-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <h6 class="text-muted mb-2">@<%= user.username %>
+                                    </h6>
+                                    <p class="card-text">
+                                        <%= post.content %>
+                                    </p>
+                                </div>
+                                <div class="card-footer bg-white justify-content-between align-items-center">
+                                    <a href="#" class="me-2">Like</a>
+                                    <small class="text-muted">02</small>
+                                    <a href="#" class=" float-end">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
