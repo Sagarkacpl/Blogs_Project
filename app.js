@@ -29,6 +29,12 @@ app.get('/profile', isLoggedIn, async (req, res) => {
     res.render('profile', {user})
 })
 
+app.get('/like/:id', isLoggedIn, async (req, res) => {
+
+    const postId = req.params.id;
+
+})
+
 app.post('/posts', isLoggedIn, async (req, res) => {
     let user = await userModal.findOne({email: req.user.email});
     const { content } = req.body
