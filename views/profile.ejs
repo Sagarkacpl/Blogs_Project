@@ -32,9 +32,11 @@
                             <a class="nav-link" href="/login">Login</a>
                         </li>
                     </ul>
-                    <a class="btn btn-danger my-2 my-sm-0" href="/logout">
-                        Logout
-                    </a>
+                    <% if (isLoggedIn) { %>
+                        <a class="btn btn-danger my-2 my-sm-0" href="/logout">
+                            Logout
+                        </a>
+                        <% } %>
                 </div>
             </div>
         </nav>

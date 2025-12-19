@@ -33,9 +33,12 @@
                         </li>
                     </ul>
                     <!-- <input class="form-control me-sm-2" type="text" placeholder="Search" /> -->
-                    <a class="btn btn-danger my-2 my-sm-0" href="/logout">
-                        Logout
-                    </a>
+
+                    <% if (isLoggedIn) { %>
+                        <a class="btn btn-danger my-2 my-sm-0" href="/logout">
+                            Logout
+                        </a>
+                        <% } %>
                 </div>
             </div>
         </nav>
