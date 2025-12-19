@@ -32,7 +32,6 @@
                             <a class="nav-link" href="/login">Login</a>
                         </li>
                     </ul>
-                    <!-- <input class="form-control me-sm-2" type="text" placeholder="Search" /> -->
                     <a class="btn btn-danger my-2 my-sm-0" href="/logout">
                         Logout
                     </a>
@@ -97,7 +96,7 @@
                                     <small class="text-muted">
                                         <%= post.likes.length %>
                                     </small>
-                                    <a href="#" class=" float-end">Edit</a>
+                                    <a href="/edit/<%= post._id %>" class=" float-end">Edit</a>
                                 </div>
                             </div>
                         </div>

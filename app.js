@@ -30,21 +30,31 @@ app.get('/profile', isLoggedIn, async (req, res) => {
 })
 
 app.get('/like/:id', isLoggedIn, async (req, res) => {
-
     const postId = req.params.id;
     let post = await postModal.findById(postId).populate('user');
-
     if (post.likes.indexOf(req.user.userid) === -1) {
         post.likes.push(req.user.userid);
     } else {
         post.likes.splice(post.likes.indexOf(req.user.userid), 1);
     }
-
-
     await post.save();
     res.redirect('/profile')
+})
 
 
+app.get('/edit/:id', isLoggedIn, async (req, res) => {
+    const postId = req.params.id;
+    let post = await postModal.findById(postId).populate('user');
+    let user = await userModal.findOne({ email: req.user.email }).populate('posts');
+    res.render('edit', { post, user })
+})
+
+app.post('/update/:id', isLoggedIn, async (req, res) => {
+    const postId = req.params.id;
+    const { content } = req.body;
+    let post = await postModal.findByIdAndUpdate(postId, { content: content }, { new: true });
+    await post.save();
+    res.redirect('/profile')
 })
 
 app.post('/posts', isLoggedIn, async (req, res) => {
