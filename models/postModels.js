@@ -9,11 +9,11 @@ const postSchema = mongoose.Schema({
             ref: 'user'
         }
     ],
-    date:{
+    date: {
         type: Date,
         default: Date.now
     },
-    content:{
+    content: {
         type: String
     },
     likes: [
@@ -22,7 +22,7 @@ const postSchema = mongoose.Schema({
             ref: 'user'
         }
     ]
-    
+
 });
 
 module.exports = mongoose.model('post', postSchema);
